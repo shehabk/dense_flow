@@ -1,0 +1,64 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build",
+            "type": "shell",
+            "command": "make",
+            // use options.cwd property if the Makefile is not in the project root ${workspaceRoot} dir
+            "options": {
+                "cwd": "${workspaceRoot}/build"
+            },
+            // start the build without prompting for task selection, use "group": "build" otherwise
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            // arg passing example: in this case is executed make QUIET=0
+            "args": ["-j2"],
+            // Use the standard less compilation problem matcher.
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": ["absolute"],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            }
+        },
+        {
+            "label": "Run",
+            "type": "shell",
+            "command": "./extract_gpu_frame",
+            "options": {
+                "cwd": "${workspaceRoot}/build"
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            // arg passing example: in this case is executed make QUIET=0
+            "args": ["-fr='/media/shehabk/D_DRIVE/codes/code_practice/eclipse-workspace/optical_flow/data/S010_006_00000001.png'",
+            "-to='/media/shehabk/D_DRIVE/codes/code_practice/eclipse-workspace/optical_flow/data/S010_006_00000015.png'",
+            "-x='/media/shehabk/D_DRIVE/codes/code_practice/eclipse-workspace/optical_flow/data/S010_006_00000015_x.jpg'",
+            "-y='/media/shehabk/D_DRIVE/codes/code_practice/eclipse-workspace/optical_flow/data/S010_006_00000015_y.jpg'",
+            "-i='/media/shehabk/D_DRIVE/codes/code_practice/eclipse-workspace/optical_flow/data/S010_006_00000015_i.jpg'",
+            "-b=20"  , "-t=1" ,  "-d=0" ,  "-s=1" , "-o=dir"],
+
+        }         
+    ]
+}

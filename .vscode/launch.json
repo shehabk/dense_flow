@@ -1,0 +1,32 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(gdb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/extract_gpu_frame",
+            "args": ["-fr", "/media/shehabk/D_DRIVE/codes/code_practice/eclipse-workspace/optical_flow/data/S010_006_00000001.png",
+                "-to" , "/media/shehabk/D_DRIVE/codes/code_practice/eclipse-workspace/optical_flow/data/S010_006_00000015.png",
+                "-x" , "/media/shehabk/D_DRIVE/codes/code_practice/eclipse-workspace/optical_flow/data/S010_006_00000015_x.png",
+                "-y" , "/media/shehabk/D_DRIVE/codes/code_practice/eclipse-workspace/optical_flow/data/S010_006_00000015_y.png",
+                "-i" , "/media/shehabk/D_DRIVE/codes/code_practice/eclipse-workspace/optical_flow/data/S010_006_00000015_i.png",
+                "-b" , "20"  , "-t"  , "1" ,  "-d"  , "0" ,  "-s" , "1" , "-o" , "dir"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+    ]
+}

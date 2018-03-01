@@ -36,6 +36,6 @@ inline void initializeMats(const Mat& frame,
 }
 
 void writeImages(std::vector<std::vector<uchar>> images, std::string name_temp);
-
+void writeImage(std::vector<std::vector<uchar>> images, std::string name_temp);
 #endif //DENSEFLOW_COMMON_H_H
 

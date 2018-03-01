@@ -14,6 +14,7 @@ else()
     message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
 endif()
 
+set (OpenCV_DIR /media/shehabk/D_DRIVE/codes/software_libraries/LibrariesOther/opencv3.3.1/opencv/build)
 
 find_package( OpenCV REQUIRED )
 find_package( LibZip REQUIRED )
@@ -30,7 +31,7 @@ endif()
 include_directories( ${OpenCV_INCLUDE_DIRS} ${LIBZIP_INCLUDE_DIR_ZIP} ${LIBZIP_INCLUDE_DIR_ZIPCONF} include/ include/easylogging++/src include/CLUE/include)
 include_directories(SYSTEM ${Boost_INCLUDE_DIR} ${PYTHON_INCLUDE_DIR})
 
-add_library(denseflow src/common.cpp src/dense_flow.cpp src/dense_flow_gpu.cpp src/dense_warp_flow_gpu.cpp src/zip_utils.cpp)
+add_library(denseflow src/common.cpp src/dense_flow.cpp src/dense_flow_gpu.cpp src/dense_flow_gpu_frame.cpp src/dense_warp_flow_gpu.cpp src/zip_utils.cpp)
 target_link_libraries( denseflow ${OpenCV_LIBS} ${LIBZIP_LIBRARY})
 
 add_library(pydenseflow SHARED src/py_denseflow.cpp)
@@ -44,6 +45,9 @@ target_link_libraries( extract_cpu ${OpenCV_LIBS} ${LIBZIP_LIBRARY} denseflow)
 
 add_executable( extract_gpu tools/extract_flow_gpu.cpp)
 target_link_libraries( extract_gpu ${OpenCV_LIBS} ${LIBZIP_LIBRARY} denseflow)
+
+add_executable( extract_gpu_frame tools/extract_flow_gpu_frame.cpp)
+target_link_libraries( extract_gpu_frame ${OpenCV_LIBS} ${LIBZIP_LIBRARY} denseflow)
 
 add_executable( extract_warp_gpu tools/extract_warp_flow_gpu.cpp)
 target_link_libraries( extract_warp_gpu ${OpenCV_LIBS} ${LIBZIP_LIBRARY} denseflow)

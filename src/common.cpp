@@ -60,3 +60,15 @@ void writeImages(std::vector<std::vector<uchar>> images, std::string name_temp){
     }
 }
 
+void writeImage(std::vector<std::vector<uchar>> images, std::string name_temp){
+    for (int i = 0; i < images.size(); ++i){
+        // char tmp[256];
+        // sprintf(tmp, "_%05d.jpg", i+1);
+        FILE* fp;
+        fp = fopen((name_temp).c_str(), "wb");
+        fwrite( images[i].data(), 1, images[i].size(), fp);
+        fclose(fp);
+    }
+}
+
+
